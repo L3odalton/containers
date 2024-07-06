@@ -2,6 +2,9 @@
     auto_https disable_redirects
 }
 
+http:// https:// {
     reverse_proxy {$VIKUNJA_SERVER_HOSTNAME}:3456 {
+            header_up Destination https:// http://
             trusted_proxies private_ranges
     }
+}
